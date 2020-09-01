@@ -17,7 +17,7 @@ public class ServerTest {
     @BeforeClass
     public static void startServer(){
         System.out.println("Start");
-        Server.port(getPort());
+        Server.port(443);
         Server.staticFiles("static");
     }
 

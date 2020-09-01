@@ -38,4 +38,11 @@ public class Server
         app.addFunction("GET",path,fun);
     }
 
+    /**
+     * Apaga el servidor
+     */
+    public static void close(){
+        app.stop();
+    }
+
 }

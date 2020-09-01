@@ -17,15 +17,12 @@ public class ServerTest {
     @BeforeClass
     public static void startServer(){
         System.out.println("Start");
-        Server.port(3032);
+        Server.port(getPort());
         Server.staticFiles("static");
     }
 
     static int getPort() {
-        if (System.getenv("PORT") != null) {
-            return Integer.parseInt(System.getenv("PORT"));
-        }
-        return 80;
+        return 3032;
     }
 
     @Test

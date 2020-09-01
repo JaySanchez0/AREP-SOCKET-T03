@@ -150,6 +150,7 @@ public class ServerTest {
         url = new URL("http://localhost:"+getPort()+"/find.html");
         con = url.openConnection();
         assertEquals(con.getHeaderField(0),"HTTP/1.1 200 OK");
+        Server.staticFiles("static");
 
 
 

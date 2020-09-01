@@ -79,6 +79,8 @@ Al pedir /porter2.PNG deberia mostrar la imagen
     mvn test
 ~~~
 
+[![CircleCI](https://circleci.com/gh/JaySanchez0/AREP-SOCKET-T03.svg?style=svg)](https://circleci.com/gh/JaySanchez0/AREP-SOCKET-T03)
+
 ### Referencias
 
 [Imagenes socket](https://stackoverflow.com/questions/25086868/how-to-send-images-through-sockets-in-java)

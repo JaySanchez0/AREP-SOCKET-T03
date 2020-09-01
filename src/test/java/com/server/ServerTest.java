@@ -14,6 +14,9 @@ import java.net.URLConnection;
 import static org.junit.Assert.assertEquals;
 
 public class ServerTest {
+    /**
+     * Inicializa el servidor para pruebas (Antes de ejecutar todos los test)
+     */
     @BeforeClass
     public static void startServer(){
         System.out.println("Start");
@@ -25,6 +28,10 @@ public class ServerTest {
         return 3032;
     }
 
+    /**
+     *  Valida que el html respondido corresponda al esperado
+     * @throws IOException
+     */
     @Test
     public void wouldBeResolveIndexHtml() throws IOException {
         URL url = new URL("http://localhost:"+getPort()+"/index.html");
@@ -42,6 +49,10 @@ public class ServerTest {
 
     }
 
+    /**
+     * Valida que el javascript solicitado corresponda al esperado
+     * @throws Exception
+     */
     @Test
     public void ShouldBeResolveJsFile() throws Exception{
         URL url = new URL("http://localhost:"+getPort()+"/js/app.js");
@@ -58,6 +69,11 @@ public class ServerTest {
         assertEquals(resp+"\n",exp);
 
     }
+
+    /**
+     * Valida que el css solicitado corresponda al esperado
+     * @throws Exception
+     */
     @Test
     public void ShouldBeResolveCssFile() throws Exception{
         URL url = new URL("http://localhost:"+getPort()+"/style.css");
@@ -74,6 +90,10 @@ public class ServerTest {
         assertEquals(resp+"\n",exp);
     }
 
+    /**
+     * Valida que al escribir un metodo get la aplicacion al pedir al url efectivamente reponda con la respuesta esperada
+     * @throws Exception
+     */
     @Test
     public void shouldBeResponseAnGet() throws Exception{
         Server.get("/suma",(request)->{
@@ -89,6 +109,10 @@ public class ServerTest {
         assertEquals(2+3,suma);
     }
 
+    /**
+     * Valida si no existe un recurso, reponda con un estado 404
+     * @throws Exception
+     */
     @Test
     public void ShouldBeSend404IfNotFound() throws Exception{
         URL url = new URL("http://localhost:"+getPort()+"/workup");
@@ -96,6 +120,10 @@ public class ServerTest {
         assertEquals(header,"HTTP/1.1 404 NOT FOUND");
     }
 
+    /**
+     * Valida que la imagen recibida corresponda a la esperada byte a byte
+     * @throws Exception
+     */
     @Test
     public void shouldBeResponseAnImage() throws Exception{
         URL url = new URL("http://localhost:"+getPort()+"/porter2.PNG");
@@ -113,6 +141,9 @@ public class ServerTest {
         for(int i=0;i<arr.length;i++) assertEquals(arr[i],arr2[i]);
     }
 
+    /**
+     * Al finalizar la ejecucion de las pruebas termina el servidor de pruebas
+     */
     @AfterClass
     public static void stop(){
         System.out.println("Stop");

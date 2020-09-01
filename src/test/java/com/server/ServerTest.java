@@ -141,6 +141,20 @@ public class ServerTest {
         for(int i=0;i<arr.length;i++) assertEquals(arr[i],arr2[i]);
     }
 
+    @Test
+    public void shouldBeChangeFolderFromStatic() throws Exception{
+        URL url = new URL("http://localhost:"+getPort()+"/find.html");
+        URLConnection con = url.openConnection();
+        assertEquals(con.getHeaderField(0),"HTTP/1.1 404 NOT FOUND");
+        Server.staticFiles("appstatic");
+        url = new URL("http://localhost:"+getPort()+"/find.html");
+        con = url.openConnection();
+        assertEquals(con.getHeaderField(0),"HTTP/1.1 200 OK");
+
+
+
+    }
+
     /**
      * Al finalizar la ejecucion de las pruebas termina el servidor de pruebas
      */
